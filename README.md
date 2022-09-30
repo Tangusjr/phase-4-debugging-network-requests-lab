@@ -62,12 +62,12 @@ developing your own process.
 
 - Add a new toy when the toy form is submitted
 
-  - How I debugged:
+  - How I debugged: There was a problem with the model naming in the create action toy = Toys.create(toy_params) it should have been toy = Toy.create(toy_params). Correction is Toy.create not Toys.create
 
 - Update the number of likes for a toy
 
-  - How I debugged:
+  - How I debugged: -I noticed that render json had not been included in the update action. So I included the following code: render json: toy
 
 - Donate a toy to Goodwill (and delete it from our database)
 
-  - How I debugged:
+  - How I debugged: The error 404 was as a result of a non existent route which had been defined in our front end and not included in our routes.rb file in the back end. To debugg this, I included the following code in the routes.rb initially the whole code was : resources :toys, only: [:index, :create, :update] the solution is to include :destroy restful route resources :toys, only: [:index, :create, :update, :destroy]
